@@ -2,14 +2,16 @@
 
 File deploy.ps allows you to deploy ARM template solution from local computer.
 
-# Requirements
+## Requirements
+
 You need to instal Azure Powershell to run deployment scripts. You can find manual here:  
 https://docs.microsoft.com/en-us/powershell/azure/install-az-ps
 
 Or you can use Chocolatey package:  
 https://community.chocolatey.org/packages/az.powershell
 
-# Authentication and authorization
+## Authentication and authorization
+
 You need to create few environment variables beforehand to provide information about subscription and service principal.
 
 Service Principal has to have Contributor role assigned at the subscription scope.
