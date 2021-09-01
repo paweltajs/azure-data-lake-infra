@@ -2,19 +2,21 @@
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "rgLocation": {
-            "type": "string"
+        "location": {
+            "type": "string",
+            "defaultValue": "northeurope"
         }
     },
     "variables": {
-        "rgName": "rg-music-lake-cm002-dev"
+        "subPrefix": "cm002-dev",
+        "rgName": "[concat('rg-music-lake-', variables('subPrefix')) ]"
     },
     "resources": [
         {
             "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2021-05-01",
+            "apiVersion": "2021-04-01",
             "name": "[variables('rgName')]",
-            "location": "[parameters('rgLocation')]",
+            "location": "[parameters('location')]",
             "properties": {}
         }
     ],
