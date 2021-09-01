@@ -5,11 +5,14 @@
         "location": {
             "type": "string",
             "defaultValue": "northeurope"
+        },
+        "subPrefix": {
+            "type": "string",
+            "defaultValue": "cm002-dev"
         }
     },
     "variables": {
-        "subPrefix": "cm002-dev",
-        "rgName": "[concat('rg-music-lake-', variables('subPrefix')) ]"
+        "rgName": "[concat('rg-music-lake-', parameters('subPrefix')) ]"
     },
     "resources": [
         {
