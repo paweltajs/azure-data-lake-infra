@@ -4,19 +4,14 @@
     "parameters": {
         "location": {
             "type": "string",
-            "defaultValue": "northeurope"
-        },
-        "subPrefix": {
-            "type": "string",
-            "defaultValue": "in-nested-tmpl"
+            "defaultValue": "westeurope"
         },
         "rgName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "nestedParam"
         }
     },
-    "variables": {
-        "rgName": "[concat('rg-music-lake-', parameters('subPrefix')) ]"
-    },
+    "variables": {    },
     "resources": [
         {
             "type": "Microsoft.Resources/resourceGroups",
