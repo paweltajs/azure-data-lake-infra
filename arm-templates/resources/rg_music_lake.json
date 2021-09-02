@@ -9,6 +9,9 @@
         "subPrefix": {
             "type": "string",
             "defaultValue": "in-nested-tmpl"
+        },
+        "rgName": {
+            "type": "string"
         }
     },
     "variables": {
@@ -18,7 +21,7 @@
         {
             "type": "Microsoft.Resources/resourceGroups",
             "apiVersion": "2021-04-01",
-            "name": "[variables('rgName')]",
+            "name": "[parameters('rgName')]",
             "location": "[parameters('location')]",
             "properties": {}
         }

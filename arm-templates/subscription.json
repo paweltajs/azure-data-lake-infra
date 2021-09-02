@@ -13,7 +13,8 @@
     },
     "variables": {
         "rgName": "[concat('rg-music-lake-', parameters('subPrefix')) ]",
-        "templateUrlRgMusicLake": "https://raw.githubusercontent.com/paweltajs/azure-data-lake-infra/main/arm-templates/resources/rg-music-lake.json"
+        "rgNameMusicLake": "[concat('rg-music-lake-', parameters('subPrefix')) ]",
+        "templateUrlRgMusicLake": "https://raw.githubusercontent.com/paweltajs/azure-data-lake-infra/feature/7-adding-rg-template-to-folder/arm-templates/resources/rg_music_lake.json"
     },
     "resources": [
         {
@@ -35,6 +36,11 @@
                 "templateLink": {
                     "uri": "[variables('templateUrlRgMusicLake')]",
                     "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "rgName": {
+                        "value": "[variables('rgNameMusicLake')]"
+                    }
                 }
             }
         }
