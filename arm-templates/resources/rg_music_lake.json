@@ -3,12 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "string",
-            "defaultValue": "westeurope"
+            "type": "string"
         },
         "rgName": {
-            "type": "string",
-            "defaultValue": "nestedParam"
+            "type": "string"
         }
     },
     "variables": {    },

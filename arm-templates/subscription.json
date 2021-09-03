@@ -9,12 +9,16 @@
         "subPrefix": {
             "type": "string",
             "defaultValue": "cm002-dev"
+        },
+        "rootDir": {
+            "type": "string",
+            "defaultValue": "https://raw.githubusercontent.com/paweltajs/azure-data-lake-infra/"
         }
     },
     "variables": {
         "rgName": "[concat('rg-music-lake-', parameters('subPrefix')) ]",
-        "rgNameMusicLake": "[concat('rg-music-lake-', parameters('subPrefix')) ]",
-        "templateUrlRgMusicLake": "https://raw.githubusercontent.com/paweltajs/azure-data-lake-infra/feature/7-adding-rg-template-to-folder/arm-templates/resources/rg_music_lake.json"
+        "rgName_musicLake": "rg_music_lake",
+        "templateUrlRgMusicLake":"[concat(parameters('rootDir'),'main/arm-templates/resources/rg_music_lake.json')]"
     },
     "resources": [
         {
@@ -30,20 +34,11 @@
             "name": "linkedTemplate",
             "properties": {
                 "mode": "Incremental",
-                "expressionEvaluationOptions": {
-                    "scope": "outer"
-                },
-                "templateLink": {
-                    "uri": "[variables('templateUrlRgMusicLake')]",
-                    "contentVersion": "1.0.0.0"
-                },
+                "expressionEvaluationOptions": {"scope":"outer"},
+                "templateLink": {"uri": "[variables('templateUrlRgMusicLake')]","contentVersion": "1.0.0.0"},
                 "parameters": {
-                    "location": {
-                        "value": "[parameters('location')]"
-                    },
-                    "rgName": {
-                        "value": "[variables('rgNameMusicLake')]"
-                    }
+                    "location": {"value": "[parameters('location')]"},
+                    "rgName": {"value": "[variables('rgName_musicLake')]"}
                 }
             }
         }
