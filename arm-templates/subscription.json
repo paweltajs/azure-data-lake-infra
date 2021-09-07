@@ -38,7 +38,8 @@
                 "templateLink": {"uri": "[variables('templateUrlRgMusicLake')]","contentVersion": "1.0.0.0"},
                 "parameters": {
                     "location": {"value": "[parameters('location')]"},
-                    "rgName": {"value": "[variables('rgName_musicLake')]"}
+                    "rgName": {"value": "[variables('rgName_musicLake')]"},
+                    "rootDir": {"value": "[parameters('rootDir')]"}
                 }
             }
         }
