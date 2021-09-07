@@ -12,13 +12,13 @@
         },
         "rootDir": {
             "type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/paweltajs/azure-data-lake-infra/"
+            "defaultValue": "https://raw.githubusercontent.com/paweltajs/azure-data-lake-infra/main/"
         }
     },
     "variables": {
         "rgName": "[concat('rg-music-lake-', parameters('subPrefix')) ]",
         "rgName_musicLake": "rg_music_lake",
-        "templateUrlRgMusicLake":"[concat(parameters('rootDir'),'main/arm-templates/resources/rg_music_lake.json')]"
+        "templateUrlRgMusicLake":"[concat(parameters('rootDir'),'arm-templates/resources/rg_music_lake.json')]"
     },
     "resources": [
         {
