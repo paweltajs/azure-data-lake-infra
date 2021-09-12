@@ -7,9 +7,57 @@
         },
         "rgName": {
             "type": "string"
+        },
+        "rootDir": {
+            "type": "string"
+        },
+        "subPrefix": {
+            "type": "string"
+        },
+        "dlsName": {
+            "type": "string"
+        },
+        "dbrName": {
+            "type": "string"
         }
     },
-    "variables": {    },
-    "resources": [],
+    "variables": {
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-10-01",
+            "name": "dls_music_lake",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('rootDir'),'arm-templates/resources/rg-music-lake/dls_music_lake.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": { "value": "[parameters('location')]" },
+                    "dls_music_lake": { "value": "[parameters('dlsName')]" },
+                    "subPrefix": { "value": "[parameters('subPrefix')]" }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-10-01",
+            "name": "dbr_music_lake",
+            "dependsOn": [ "resourceId('Microsoft.Resources/deployments','dlsTemplate')" ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('rootDir'),'arm-templates/resources/rg-music-lake/dls_music_lake.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": { "value": "[parameters('location')]" },
+                    "dbr_music_lake": { "value": "[parameters('dbrName')]" }
+                }
+            }
+        }
+    ],
     "outputs": {}
 }
