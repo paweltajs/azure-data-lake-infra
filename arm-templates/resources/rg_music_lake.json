@@ -11,9 +11,6 @@
         "rootDir": {
             "type": "string"
         },
-        "subPrefix": {
-            "type": "string"
-        },
         "dlsName": {
             "type": "string"
         },
@@ -36,8 +33,7 @@
                 },
                 "parameters": {
                     "location": { "value": "[parameters('location')]" },
-                    "dls_music_lake": { "value": "[parameters('dlsName')]" },
-                    "subPrefix": { "value": "[parameters('subPrefix')]" }
+                    "dls_music_lake": { "value": "[parameters('dlsName')]" }
                 }
             }
         },
@@ -45,7 +41,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
             "name": "dbr_music_lake",
-            "dependsOn": [ "resourceId('Microsoft.Resources/deployments','dlsTemplate')" ],
+            "dependsOn": [ "dls_music_lake" ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {

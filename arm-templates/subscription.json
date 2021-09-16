@@ -44,7 +44,6 @@
                     "location": { "value": "[parameters('location')]" },
                     "rgName": { "value": "[variables('rg_music_lake')]" },
                     "rootDir": { "value": "[parameters('rootDir')]" },
-                    "subPrefix": { "value": "[parameters('subPrefix')]" },
                     "dlsName": { "value": "[variables('dlsName')]" },
                     "dbrName": { "value": "[variables('dbrName')]" }
                 }
