@@ -8,7 +8,7 @@
         },
         "subPrefix": {
             "type": "string",
-            "defaultValue": "cm002-dev"
+            "defaultValue": "-cm002-dev"
         },
         "rootDir": {
             "type": "string",
@@ -16,29 +16,36 @@
         }
     },
     "variables": {
-        "rgName": "[concat('rg-music-lake-', parameters('subPrefix')) ]",
-        "rgName_musicLake": "rg_music_lake",
-        "templateUrlRgMusicLake":"[concat(parameters('rootDir'),'arm-templates/resources/rg_music_lake.json')]"
+        "rg_music_lake": "[concat('rg-music-lake', parameters('subPrefix')) ]",
+        "dlsName": "[concat('dls-music-lake', parameters('subPrefix')) ]",
+        "dbrName": "[concat('dbr-music-lake', parameters('subPrefix')) ]"
     },
     "resources": [
         {
             "type": "Microsoft.Resources/resourceGroups",
             "apiVersion": "2021-04-01",
-            "name": "[variables('rgName')]",
+            "name": "[variables('rg_music_lake')]",
             "location": "[parameters('location')]",
             "properties": {}
         },
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
-            "name": "linkedTemplate",
+            "name": "rg_music_lake",
+            "resourceGroup": "[variables('rg_music_lake')]",
+            "dependsOn": [ "[variables('rg_music_lake')]" ],
             "properties": {
                 "mode": "Incremental",
-                "expressionEvaluationOptions": {"scope":"outer"},
-                "templateLink": {"uri": "[variables('templateUrlRgMusicLake')]","contentVersion": "1.0.0.0"},
+                "templateLink": {
+                    "uri": "[concat(parameters('rootDir'),'arm-templates/resources/rg_music_lake.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
                 "parameters": {
-                    "location": {"value": "[parameters('location')]"},
-                    "rgName": {"value": "[variables('rgName_musicLake')]"}
+                    "location": { "value": "[parameters('location')]" },
+                    "rgName": { "value": "[variables('rg_music_lake')]" },
+                    "rootDir": { "value": "[parameters('rootDir')]" },
+                    "dlsName": { "value": "[variables('dlsName')]" },
+                    "dbrName": { "value": "[variables('dbrName')]" }
                 }
             }
         }
