@@ -7,4 +7,4 @@ $Credential = New-Object -TypeName System.Management.Automation.PSCredential -Ar
 Connect-AzAccount -Credential $Credential -Tenant $Env:TENANT_ID -SubscriptionId $Env:SUBSCRIPTION_ID -ServicePrincipal
 
 # Create deployment with changes preview and prompt
-New-AzDeployment -Location "North Europe" -TemplateFile "../subscription.json" -WhatIf -Confirm
+New-AzDeployment -Location "North Europe" -TemplateFile "arm-templates/subscription.json" -WhatIf -Confirm

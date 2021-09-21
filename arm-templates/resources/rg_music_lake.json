@@ -16,6 +16,12 @@
         },
         "dbrName": {
             "type": "string"
+        },
+        "kvName": {
+            "type": "string"
+        },
+        "kvDevOpsName": {
+            "type": "string"
         }
     },
     "variables": {
@@ -51,6 +57,38 @@
                 "parameters": {
                     "location": { "value": "[parameters('location')]" },
                     "dbr_music_lake": { "value": "[parameters('dbrName')]" }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-10-01",
+            "name": "kv_music_lake",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('rootDir'),'arm-templates/resources/rg-music-lake/kv_music_lake.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": { "value": "[parameters('location')]" },
+                    "dbr_music_lake": { "value": "[parameters('kvName')]" }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-10-01",
+            "name": "kv_dev_ops",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('rootDir'),'arm-templates/resources/rg-music-lake/kv_dev_ops.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": { "value": "[parameters('location')]" },
+                    "dbr_music_lake": { "value": "[parameters('kvDevOpsName')]" }
                 }
             }
         }
