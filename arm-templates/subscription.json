@@ -18,7 +18,9 @@
     "variables": {
         "rg_music_lake": "[concat('rg-music-lake', parameters('subPrefix')) ]",
         "dlsName": "[concat('dls-music-lake', parameters('subPrefix')) ]",
-        "dbrName": "[concat('dbr-music-lake', parameters('subPrefix')) ]"
+        "dbrName": "[concat('dbr-music-lake', parameters('subPrefix')) ]",
+        "kvName": "[concat('kv-music-lake', parameters('subPrefix')) ]",
+        "kvDevOpsName": "[concat('kv-dev-ops', parameters('subPrefix')) ]"
     },
     "resources": [
         {
@@ -45,7 +47,9 @@
                     "rgName": { "value": "[variables('rg_music_lake')]" },
                     "rootDir": { "value": "[parameters('rootDir')]" },
                     "dlsName": { "value": "[variables('dlsName')]" },
-                    "dbrName": { "value": "[variables('dbrName')]" }
+                    "dbrName": { "value": "[variables('dbrName')]" },
+                    "kvName": { "value": "[variables('kvName')]" },
+                    "kvDevOpsName": { "value": "[variables('kvDevOpsName')]" }
                 }
             }
         }
